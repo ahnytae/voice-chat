@@ -1,0 +1,2 @@
+# Design
+A person talks beside a MacBook at a lit desk; a warm light surface keeps the conversation readable without the appearance of a recording studio. Restrained sage accent, warm neutral backgrounds, system typography. One conversation column with an expandable settings section and bottom composer. Clear states: idle, listening, recognizing, generating, speaking, error. No illustration is needed: the user has confirmed the single-screen direction, and this implementation uses ordinary text and controls. Layout stacks on mobile; reduced motion is respected.

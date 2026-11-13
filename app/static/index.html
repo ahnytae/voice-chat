@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>곁 · 로컬 비서</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body><main>
+<header><a class="brand" href="/">곁<span>LOCAL SECRETARY</span></a><button id="clear" class="quiet">새 대화</button></header>
+<section class="intro"><p class="eyebrow">내 컴퓨터 안의 비서</p><h1>편하게 이야기하세요.</h1><p>말을 듣고, 생각하고, 목소리로 답합니다.</p></section>
+<details id="settings"><summary>연결과 목소리 설정 <span id="connection">연결 확인 중</span></summary><div class="settings-grid">
+<label>로컬 LLM 주소<input id="base_url" value="http://127.0.0.1:11434/v1" type="url"></label>
+<label>LLM 모델<input id="model" value="qwen2.5:14b" list="models"><datalist id="models"></datalist></label>
+<label>입력 마이크<select id="input_device"><option value="">시스템 기본 마이크</option></select></label>
+<label>Whisper 모델<select id="whisper"><option>tiny</option><option>base</option><option selected>small</option><option>medium</option><option>large-v3-turbo</option></select></label>
+<label>대화 언어<select id="language"><option value="ko">한국어</option><option value="en">English</option><option value="fr">Français</option><option value="es">Español</option><option value="pt">Português</option></select></label>
+<label>Supertonic-2 목소리<select id="voice"><option>F1</option><option>F2</option><option>F3</option><option>F4</option><option>F5</option><option>M1</option><option>M2</option><option>M3</option><option>M4</option><option>M5</option></select></label>
+<label>말하기 속도<input id="speed" type="number" min="0.7" max="2" step="0.05" value="1.05"></label>
+<label>합성 단계<input id="steps" type="number" min="2" max="15" value="5"></label>
+<label>발화 종료 대기 (초)<input id="silence" type="number" min="0.4" max="3" step="0.1" value="0.9"></label>
+<label>마이크 감지 감도<select id="threshold"><option value="0.008">높음 · 조용한 말소리</option><option value="0.018" selected>보통</option><option value="0.035">낮음 · 주변 소음 있음</option></select></label>
+<label class="check"><input id="barge_in" type="checkbox" checked>말하면 답변 중단하기</label>
+<label class="check"><input id="speak" type="checkbox" checked>답변을 음성으로 듣기</label>
+</div><div class="settings-footer"><button id="connect">연결 확인</button><small>설정은 이 브라우저에 저장됩니다. 모델 최초 다운로드에는 인터넷이 필요합니다.</small></div></details>
+<div id="error" role="alert" hidden></div>
+<section id="conversation" aria-label="대화 기록"><div id="empty"><span class="seed">곁</span><h2>오늘은 무엇을 도와드릴까요?</h2><p>마이크를 켠 뒤 말하거나, 아래에 글을 입력하세요.</p><button class="suggestion">오늘 할 일을 함께 정리해줘.</button></div></section>
+<footer><div class="status-row"><span id="status" role="status" aria-live="polite">대기 중</span><meter id="level" min="0" max="0.12" value="0" aria-label="마이크 입력 음량"></meter><button id="finish" class="quiet" disabled>말 끝내고 보내기</button><button id="stop" class="quiet" disabled>답변 중단</button></div>
+<div class="controls"><button id="mic" aria-pressed="false">마이크 켜기</button><form id="composer"><label class="sr-only" for="text">비서에게 할 말</label><input id="text" placeholder="무엇이든 말씀해주세요" autocomplete="off" maxlength="4000"><button id="send" type="submit">보내기</button></form></div>
+<p id="mic_hint" class="footnote" role="status">마이크를 켜면 입력 음량과 연결 상태를 확인할 수 있습니다.</p>
+<p class="footnote">말을 마친 뒤 잠시 기다리거나 ‘말 끝내고 보내기’를 누르세요. 답변 중에도 말을 시작하면 멈추고 듣습니다. 스피커 소리로 자꾸 끊기면 이어폰을 사용하거나 설정에서 자동 중단을 꺼주세요.</p></footer>
+</main></body></html>
